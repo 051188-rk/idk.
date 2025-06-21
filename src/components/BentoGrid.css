@@ -1,0 +1,115 @@
+:root {
+  --font-color-dark: #000000;
+  --font-color-light: #ffffff;
+  --bg-color: #ffffff;
+  --main-color: #0037ff;
+  --accent-color: #4dff29;
+  --bento-shadow: 4px 4px var(--main-color);
+  --bento-border: 2px solid var(--main-color);
+  --radius: 20px;
+}
+
+/* Global resets */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Poppins", sans-serif;
+  background-color: #f7f7f7;
+  color: var(--font-color-dark);
+}
+
+.section {
+  padding-block: 3rem;
+}
+
+.container {
+  max-width: 75rem;
+  margin: auto;
+  padding: 0 1.5rem;
+}
+
+/* Utility colors */
+.text-accent {
+  color: var(--accent-color);
+}
+
+.text-highlight {
+  color: var(--main-color);
+}
+
+/* Bento Grid */
+.bento-column {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-areas:
+    "social"
+    "multiple"
+    "consistency"
+    "timing"
+    "follower"
+    "growth"
+    "schedule"
+    "content";
+  gap: 1.25rem;
+}
+
+.bento-item {
+  background: var(--bg-color);
+  border: var(--bento-border);
+  box-shadow: var(--bento-shadow);
+  border-radius: var(--radius);
+  padding: 2rem;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.bento-item:hover {
+  transform: translateY(-4px);
+  box-shadow: 6px 6px var(--accent-color);
+}
+
+/* Assign areas */
+.schedule { grid-area: schedule; }
+.social { grid-area: social; background-color: var(--main-color); color: var(--font-color-light); }
+.timing { grid-area: timing; }
+.content { grid-area: content; background-color: #e5fdea; }
+.multiple { grid-area: multiple; }
+.growth { grid-area: growth; }
+.consistency { grid-area: consistency; background-color: #f5fff0; }
+.follower { grid-area: follower; background-color: var(--main-color); color: var(--font-color-light); }
+
+/* Typography */
+.bento-item h2 {
+  font-size: 1.75rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+.bento-item p {
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
+/* Responsive Grid */
+@media (min-width: 48rem) {
+  .bento-column {
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: 1fr 3rem 0.5fr 1fr;
+    grid-template-areas:
+      "schedule social social timing"
+      "schedule multiple consistency timing"
+      "content multiple consistency timing"
+      "content growth follower follower";
+  }
+
+  .bento-item {
+    padding: 1.5rem;
+  }
+
+  .follower h2 {
+    text-align: left;
+  }
+}
