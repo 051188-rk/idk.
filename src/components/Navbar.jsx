@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
 import './Navbar.css';
 import logo from '../assets/1.png'; // Ensure this path is correct
+import { useNavigate } from 'react-router-dom';
 
 const Navbar = () => {
   const [activeOption, setActiveOption] = useState('home');
+  const navigate = useNavigate();
 
   const options = [
     { value: 'home', label: 'Home' },
@@ -37,7 +39,7 @@ const Navbar = () => {
         ))}
 
         <div className="option">
-          <button className="get-started">Get Started</button>
+          <button className="get-started" onClick={() => navigate('/signup')}>Get Started</button>
         </div>
       </div>
     </nav>
